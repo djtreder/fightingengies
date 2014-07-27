@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Server Status</title>
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+</head>
+<body>
+<h1>Minecraft Server</h1>
+<p id="version">Loading Minecraft Version...</p>
+<h1 id="online">Loading Server...</h1>
+<h2>Number of players currently playing: </h2><p id="playerListHTML">Loading players...</p>
+<script src="//api.syfaro.net/scripts/minecraft.min.js"></script>
+<script>
+var updateServerStatus = function() {
+		MinecraftAPI.getServerStatus('minecraft.fightingengies.com', {
+port: 25565}, function(err, status) {
+$('#version').text(status.server.name);
+$('#online').text(status.online);
+$('#playerListHTML').text(status.players.now);
+})};
+updateServerStatus();
+</script>
+<hr>
+<script type="text/javascript" src="https://view.light-speed.com/mumble.php?url=https%3A//api.mumble.com/mumble/cvp.php%3Ftoken%3DLSG-8D-55C23DEB&c=850812&r=10&h=300&w=200&css=https%3A//view.light-speed.com/styles/mumble-minimal.css">
+</script>
+<script type="text/javascript">
+setTimeout(function() {location.reload(true)}, 1000*60);
+</script>
+</body>
+</html>
